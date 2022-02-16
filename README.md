@@ -1,11 +1,14 @@
 ## 蓝奏云直链获取工具
 
-###### lanzou direct link Helper
+#### lanzou direct link Helper
 
-##### 一开始是想找个解析工具放在Android app里用来更新的，但发现Java版本的最短的都一年没有更新了，还是自己摸个简单的能用就好。
+### 一开始是想找个解析工具放在Android app里用来更新的，但发现Java版本的最短的都一年没有更新了，还是自己摸个简单的能用就好。
 
 - 依赖 okhttp3，jsoup
 - 支持新旧两种蓝奏云页面，文件名、大小和直链
+- 单Java类，拷走就能用  
+
+如果这有帮助到你，请你点个 **Star** 让我知道吧 :)
 
 ##### Example：
 
