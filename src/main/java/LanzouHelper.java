@@ -21,7 +21,7 @@ public class LanzouHelper {
 
 
     public static Lanzou getLanZouRealLink(String url) {
-        String mainHost = getFullHost(url);
+        String fullHost = getFullHost(url);
 
         // 添加蓝奏云特有的header
         Headers headers = builder.set("referer", url).build();
@@ -47,7 +47,7 @@ public class LanzouHelper {
 
             // 获取与拼接下载页（iframe）地址
             Elements realPage = doc.select("iframe");
-            String realUrl = "https://" + mainHost + realPage.attr("src");
+            String realUrl = "https://" + fullHost + realPage.attr("src");
             doc = Jsoup.connect(realUrl).get();
 
             // 正则分析动态参数
@@ -57,6 +57,8 @@ public class LanzouHelper {
             String signs = getJsonValue("ajaxdata", js);
             String webSignKey = getJsonValue("websignkey", js);
             String webSign = "";
+            String apiUrl = "https://" + fullHost + getJsonValue("url",js);
+
 
             // OkHttp 获取直链
             OkHttpClient client = new OkHttpClient();
@@ -69,7 +71,7 @@ public class LanzouHelper {
                     .add("ves", "1")
                     .build();
             Request request = new Request.Builder()
-                    .url("https://www.lanzoux.com/ajaxm.php")
+                    .url(apiUrl)
                     .post(formBody)
                     .headers(headers)
                     .build();
