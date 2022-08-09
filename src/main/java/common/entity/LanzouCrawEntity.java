@@ -1,17 +1,20 @@
-package entity;
+package common.entity;
+
+
+import java.util.Collections;
 
 /**
  * 蓝奏云实体对象
  * @author Hoyoung
  */
-public class LanzouEntity extends CommonEntity {
-    public LanzouEntity() {
+public class LanzouCrawEntity extends CommonCrawEntity {
+    public LanzouCrawEntity() {
     }
 
-    public LanzouEntity(String name, String size, String dl) {
+    public LanzouCrawEntity(String name, String size, String dl) {
         this.name = name;
         this.size = size;
-        this.setDlLink(dl);
+        this.setDlLinks(Collections.singletonList(dl));
     }
 
     private String name;

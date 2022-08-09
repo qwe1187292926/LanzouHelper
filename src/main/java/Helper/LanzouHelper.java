@@ -1,17 +1,22 @@
 package Helper;
 
-import entity.LanzouEntity;
+import common.entity.LanzouCrawEntity;
 import okhttp3.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import utils.HeaderUtil;
+import common.utils.HeaderUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 蓝奏下载直接链接获取工具
+ * 调用 getLink() 即可
+ * @author Hoyoung
+ */
 public class LanzouHelper {
     static final Pattern mainHostRegex = Pattern.compile("(?<=http://|\\.)[^.]*?\\.(?:com\\.cn|net\\.cn|org\\.cn|com|net|org|cn|biz|info|cc|tv)", Pattern.CASE_INSENSITIVE);
     static final Pattern fullHostRegex = Pattern.compile("[^//]*?\\.(com|cn|net|org|biz|info|cc|tv)", Pattern.CASE_INSENSITIVE);
@@ -19,12 +24,12 @@ public class LanzouHelper {
     private LanzouHelper() {
     }
 
-    public static LanzouEntity getLink(String url) {
+    public static LanzouCrawEntity getLink(String url) {
 
         String fullHost = getFullHost(url);
 
         // 添加蓝奏云特有的header
-        Headers headers = new HeaderUtil.Generator().generate().set("referer", url).build();
+        Headers headers = new HeaderUtil.Generator().set("Upgrade-Insecure-Requests", "1").setReferer(url).generate().build();
 
         String name = null, size = null;
         try {
@@ -83,7 +88,7 @@ public class LanzouHelper {
             }
 
             // 返回蓝奏云对象
-            return new LanzouEntity(name, size, dl);
+            return new LanzouCrawEntity(name, size, dl);
         } catch (IOException e) {
             e.printStackTrace();
         }
