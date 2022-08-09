@@ -1,4 +1,4 @@
-package common.utils;
+package com.hoyoung.CrawHelper.common.utils;
 
 import java.util.ArrayList;
 import java.util.List;

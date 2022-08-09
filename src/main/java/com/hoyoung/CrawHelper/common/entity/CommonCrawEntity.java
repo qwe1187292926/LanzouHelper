@@ -1,4 +1,4 @@
-package common.entity;
+package com.hoyoung.CrawHelper.common.entity;
 
 import java.util.List;
 

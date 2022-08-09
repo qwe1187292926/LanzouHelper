@@ -1,11 +1,11 @@
-package Helper;
+package com.hoyoung.CrawHelper.Helper;
 
-import common.entity.LanzouCrawEntity;
+import com.hoyoung.CrawHelper.common.entity.LanzouCrawEntity;
+import com.hoyoung.CrawHelper.common.utils.HeaderUtil;
 import okhttp3.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import common.utils.HeaderUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 /**
  * 蓝奏下载直接链接获取工具
  * 调用 getLink() 即可
+ *
  * @author Hoyoung
  */
 public class LanzouHelper {
@@ -61,7 +62,7 @@ public class LanzouHelper {
             String signs = getValue("ajaxdata", js);
             String webSignKey = getValue("cwebsignkeyc", js);
             String webSign = "";
-            String apiUrl = "https://" + fullHost + getValue("url",js);
+            String apiUrl = "https://" + fullHost + getValue("url", js);
 
             // OkHttp 获取直链
             OkHttpClient client = new OkHttpClient();
@@ -99,6 +100,7 @@ public class LanzouHelper {
     /**
      * 正则匹配js中设定值，或者匹配json
      * eg: var key = value;
+     *
      * @param key
      * @param json
      * @return

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>lanzou_downloader</artifactId>
+    <artifactId>CrawHelper</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
