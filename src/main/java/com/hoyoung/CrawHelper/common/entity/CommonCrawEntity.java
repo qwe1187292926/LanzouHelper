@@ -17,6 +17,19 @@ public class CommonCrawEntity {
 
     private List dlLinks;
 
+    /**
+     * 如果明确下载的文件格式，建议指定，以防下载服务器未指定文件后缀名
+     */
+    private String suffix;
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
     public List getDlLinks() {
         return dlLinks;
     }
@@ -29,6 +42,7 @@ public class CommonCrawEntity {
     public String toString() {
         return ", {" +
                 "dlLinks=" + dlLinks +
+                ", suffix='" + suffix + '\'' +
                 '}';
     }
 }

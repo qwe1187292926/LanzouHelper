@@ -1,6 +1,8 @@
 package com.hoyoung.CrawHelper.common.entity;
 
 
+import com.hoyoung.CrawHelper.common.enums.EntityTypeEnum;
+
 import java.util.Collections;
 
 /**
@@ -14,6 +16,8 @@ public class LanzouCrawEntity extends CommonCrawEntity {
     public LanzouCrawEntity(String name, String size, String dl) {
         this.name = name;
         this.size = size;
+        // 默认不设置后缀
+        this.setSuffix(EntityTypeEnum.UNKNOWN.getSuffix());
         this.setDlLinks(Collections.singletonList(dl));
     }
 

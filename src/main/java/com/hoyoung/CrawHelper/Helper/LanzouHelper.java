@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 /**
  * 蓝奏下载直接链接获取工具
- * 调用 getLink() 即可
+ * 调用 getResource() 即可
  *
  * @author Hoyoung
  */
@@ -25,7 +25,7 @@ public class LanzouHelper {
     private LanzouHelper() {
     }
 
-    public static LanzouCrawEntity getLink(String url) {
+    public static LanzouCrawEntity getResource(String url) {
 
         String fullHost = getFullHost(url);
 
@@ -89,7 +89,8 @@ public class LanzouHelper {
             }
 
             // 返回蓝奏云对象
-            return new LanzouCrawEntity(name, size, dl);
+            LanzouCrawEntity lanzouCrawEntity = new LanzouCrawEntity(name, size, dl);
+            return lanzouCrawEntity;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -140,10 +141,9 @@ public class LanzouHelper {
         urls.add("https://macwk.lanzouo.com/iRH0wwq0m8d");
         //个人链接
         urls.add("https://vincentapps.lanzouo.com/i4uS3lmp56j");
-        for (String url :
-                urls) {
-            System.out.println(getLink(url));
-        }
+
+        //输出
+        urls.stream().map(LanzouHelper::getResource).forEach(System.out::println);
     }
 
 

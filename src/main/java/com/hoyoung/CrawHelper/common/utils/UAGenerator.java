@@ -22,7 +22,7 @@ public class UAGenerator {
     }
 
     static String randomOneUA(){
-        return uaList().get(new Random().nextInt(uaList.size()));
+        return uaList.get(new Random().nextInt(uaList.size()));
     }
 
     private UAGenerator() {
